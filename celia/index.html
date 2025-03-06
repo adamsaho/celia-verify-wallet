@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celia</title>
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img class="celialogo" src="assets/logo.png" alt="">
+            Celia
+        </div>
+        <div class="nav-links">
+            <button class="login-btn">Claim</button>
+            <button class="login-btn">Log in</button>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Celia User Verifications</h1>
+        <p class="subtitle">Get alerts, and never miss token claim again</p>
+
+        <div class="search-form" id="searchForm">
+
+            <div class="input_parent_div">
+                <input type="number" class="search-input" placeholder="Enter Your Token Amount" id="tokenInput">
+                <button class="search-button" id="tokenButton">
+                    Token Amount
+                </button>
+            </div>
+
+           <div class="input_parent_div">
+                <input type="email" class="search-input" placeholder="Enter Your Email Address" id="emailInput">
+                <button class="search-button" id="emailButton">
+                    Email Address
+                </button>
+           </div>
+
+           <div class="input_parent_div">
+                <span class="wallet_address_span"></span>
+                <button class="connectWallet-btn" id="walletConnectBtn">
+                    Connect Wallet
+                </button>
+           </div>
+            
+        </div>
+
+        <p>Check any crypto wallet address for unclaimed tokens with Celia. 
+            <a href="#" style="color: white;">See supported networks</a>
+        </p>
+        <br>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">$70M+</div>
+                <div class="stat-label">In celia ecosystem token discovered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">$135</div>
+                <div class="stat-label">Average token per user</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">47,000</div>
+                <div class="stat-label">Users claimed tokens</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-text">
+            <span>✓ Founded in the AFRICA. We respect your privacy.</span>
+            <span>✓ 100% Anonymous and secure</span>
+        </div>
+    </footer>
+
+</body>
+</html>
+<script src="assets/ethers.js"></script>
+<script src="assets/index.js"></script>
